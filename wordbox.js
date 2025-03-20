@@ -121,14 +121,6 @@ function score() {
     threeLetterWords.push(letters.slice(i, i + 3).join(""));
   }
 
-  // horizontal words
-  // const rowh1 = letters[0] + letters[1] + letters[2] + letters[3];
-  // const rowh2 = letters[4] + letters[5] + letters[6] + letters[7];
-  // const rowh3 = letters[8] + letters[9] + letters[10] + letters[11];
-  // const rowh4 = letters[12] + letters[13] + letters[14] + letters[15];
-
-  // vertical words
-
   for (let i = 0; i < 4; i++) {
     fourLetterWords.push(
       letters[i] + letters[i + 4] + letters[i + 8] + letters[i + 12]
@@ -143,8 +135,16 @@ function score() {
     threeLetterWords.push(letters[i] + letters[i + 4] + letters[i + 8]);
   }
 
-  console.log(fourLetterWords, "all four letter words");
-  console.log(threeLetterWords, "all three letter words");
+  fourLetterWords.push(letters[0] + letters[5] + letters[10] + letters[15]);
+
+  threeLetterWords.push(
+    letters[0] + letters[5] + letters[10],
+    letters[5] + letters[10] + letters[15]
+  );
+  threeLetterWords.push(
+    letters[1] + letters[6] + letters[11],
+    letters[4] + letters[9] + letters[14]
+  );
 
   let points = 0;
   let correctwords = [];
@@ -163,7 +163,6 @@ function score() {
     }
   });
 
-  console.log(correctwords, points);
   if (points === 0) {
     document.getElementById("scoretext").innerHTML =
       "Sorry, there are no words. And no points.";
@@ -197,51 +196,7 @@ function score() {
       ".";
   }
 }
-// function init() {
-//   while (letters.length > 0) {
-//     showletters();
-//   }
-
-//   const boxes = document.querySelectorAll(".box");
-//   boxes.forEach((box) => {
-//     box.addEventListener("dragenter", dragEnter);
-//     box.addEventListener("dragover", dragOver);
-//     box.addEventListener("dragleave", dragLeave);
-//     box.addEventListener("drop", drop);
-//   });
-// }
 
 letters.map((letter) => {
   showletters(letter);
 });
-
-// function getwords() {
-//   let letter1 = document.querySelector(".box1").children[0].textContent;
-//   let letter2 = document.querySelector(".box2").children[0].textContent;
-//   let letter3 = document.querySelector(".box3").children[0].textContent;
-//   let letter4 = document.querySelector(".box4").children[0].textContent;
-//   let letter5 = document.querySelector(".box5").children[0].textContent;
-//   let letter6 = document.querySelector(".box6").children[0].textContent;
-//   let letter7 = document.querySelector(".box7").children[0].textContent;
-//   let letter8 = document.querySelector(".box8").children[0].textContent;
-//   let letter9 = document.querySelector(".box9").children[0].textContent;
-//   let letter10 = document.querySelector(".box10").children[0].textContent;
-//   let letter11 = document.querySelector(".box11").children[0].textContent;
-//   let letter12 = document.querySelector(".box12").children[0].textContent;
-//   let letter13 = document.querySelector(".box13").children[0].textContent;
-//   let letter14 = document.querySelector(".box14").children[0].textContent;
-//   let letter15 = document.querySelector(".box15").children[0].textContent;
-//   let letter16 = document.querySelector(".box16").children[0].textContent;
-
-//   // horizontal words
-//   let wordh1 = letter1 + letter2 + letter3 + letter4;
-//   let wordh2 = letter5 + letter6 + letter7 + letter8;
-//   let wordh3 = letter9 + letter10 + letter11 + letter12;
-//   let wordh4 = letter13 + letter14 + letter15 + letter16;
-
-//   // vertical words
-//   let wordv1 = letter1 + letter5 + letter9 + letter13;
-//   let wordv2 = letter2 + letter6 + letter10 + letter14;
-//   let wordv3 = letter3 + letter7 + letter11 + letter15;
-//   let wordv4 = letter4 + letter8 + letter12 + letter12;
-// }
