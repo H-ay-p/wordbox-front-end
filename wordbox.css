@@ -20,7 +20,7 @@ body {
 .letterbox {
   background-color: rgb(255, 250, 225);
   border: 2px green solid;
-  border-radius: 1em;
+  border-radius: 0.5em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -102,4 +102,3 @@ body {
   opacity: 100%;
   border: #a8a6a6 dotted 2px;
 }
-
