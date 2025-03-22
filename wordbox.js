@@ -53,7 +53,6 @@ boxes.forEach((box) => {
 
 function dragStart(e) {
   e.target.classList.add("dragging");
-  //e.target.classList.remove("margin");
   e.dataTransfer.setData("text/plain", e.target.id);
 }
 
@@ -89,9 +88,9 @@ function drop(e) {
   e.target.classList.remove("dragging");
   e.target.appendChild(draggable);
   draggable.classList.add("dropped");
-  // if (document.getElementById("letterpool").childElementCount === 0) {
-  //   document.getElementById("score").removeAttribute("disabled", true);
-  // }
+  if (document.getElementById("letterpool").childElementCount === 0) {
+    document.getElementById("score").removeAttribute("disabled", true);
+  }
 }
 
 function score() {
