@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <title>Wordbox</title>
     <link href="./wordbox.css" rel="stylesheet" type="text/css" />
-    <script src="./wordbox.js" defer></script>
+    <script src="./wordbox.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1 class="text">Wordbox</h1>
@@ -42,7 +43,19 @@
       <div class="letterbox" id="box16"></div>
     </section>
 
-    <section class="centred scoretext" id="scoretext"></section>
+    <section class="centred scoretext">
+      <p id="scoretext"></p>
+      <button class="button hidden" id="try-again" onclick="replaceLetters()">
+        Try again
+      </button>
+      <button
+        class="button hidden"
+        id="new-letters"
+        onClick="window.location.reload()"
+      >
+        New letters
+      </button>
+    </section>
 
     <div class="centred">
       <button class="button" id="score" onclick="score()" disabled="true">
