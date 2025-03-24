@@ -62,7 +62,7 @@ body {
 .letterpool {
   width: 80vmin;
   height: 35vmin;
-  border: 2px solid #0f5132;
+  border: 2px solid #45584f;
   margin: 1vh auto 3vh auto;
   border-radius: 1em;
   padding: 1em;
@@ -101,4 +101,8 @@ body {
 .dropped {
   opacity: 100%;
   border: #a8a6a6 dotted 2px;
+}
+
+.hidden {
+  visibility: hidden;
 }
