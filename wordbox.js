@@ -41,12 +41,17 @@ const inputBoxes = document.querySelectorAll(".letter-input");
 inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener("input", validateInput);
   inputBox.addEventListener("keypress", preventInvalidInput);
+  // inputBox.addEventListener("focus", focusFunc);
+  // inputBox.addEventListener("keydown", deleteInput);
 });
 
 const letterpool = document.getElementById("letterpool");
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
+
+let lettersDone = false;
 
 function showletters(letter) {
   let element = document.createElement("div");
@@ -59,6 +64,12 @@ function showletters(letter) {
   // Append the element to the parent element
   document.getElementById("letterpool").append(element);
 }
+
+letters.map((letter) => {
+  showletters(letter);
+});
+
+lettersDone = true;
 
 // handle the dragstart
 
@@ -112,13 +123,46 @@ function drop(e) {
   }
 }
 
-function validateInput(event) {
-  const currentValue = event.target.value.toUpperCase();
+function validateInput(e) {
+  const currentValue = e.target.value.toUpperCase();
+  const newLetters = document.querySelectorAll(".newletter");
+
+  for (let i = 0; i < newLetters.length; i++) {
+    if (newLetters[i].textContent == currentValue) {
+      letterpool.removeChild(newLetters[i]);
+      let index = lettersCopy.indexOf(currentValue);
+      lettersCopy.splice(index, 1);
+      break;
+    }
+  }
 }
+
+// function focusFunc(e) {
+//   let focusValue = e.target.value.toUpperCase();
+//   console.log(e);
+// }
+
+// function deleteInput(e) {
+//   const key = e.key;
+//   console.log(e.srcElement.textContent);
+//   if (key === "Backspace" || key === "Delete") {
+//     console.log("delete pushed");
+//     lettersCopy.push(focusValue);
+//     console.log(lettersCopy);
+//     // while (letterpool.firstChild) {
+//     //   letterpool.removeChild(letterpool.firstChild);
+//     // }
+
+//     letterpool.innerHTML = "";
+//     lettersCopy.map((letter) => {
+//       showletters(letter);
+//     });
+//   }
+// }
 
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
-  if (!letters.includes(event.key)) {
+  if (!lettersCopy.includes(event.key)) {
     event.preventDefault();
   }
 }
@@ -210,10 +254,6 @@ export function score() {
   }
 }
 
-letters.map((letter) => {
-  showletters(letter);
-});
-
 function replaceLetters() {
   lettersCopy.map((letter) => {
     showletters(letter);
@@ -225,3 +265,4 @@ function replaceLetters() {
 
 window.score = score;
 window.replaceLetters = replaceLetters;
+// window.focusFunc = focusFunc;
