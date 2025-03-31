@@ -41,11 +41,12 @@ const inputBoxes = document.querySelectorAll(".letter-input");
 inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener("input", validateInput);
   inputBox.addEventListener("keypress", preventInvalidInput);
-  inputBox.addEventListener("focus", focusFunc);
-  inputBox.addEventListener("keydown", deleteInput);
+  // inputBox.addEventListener("focus", focusFunc);
+  // inputBox.addEventListener("keydown", deleteInput);
 });
 
 const letterpool = document.getElementById("letterpool");
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -136,21 +137,28 @@ function validateInput(e) {
   }
 }
 
-let focusValue = "";
-function focusFunc(e) {
-  focusValue = e.target.value.toUpperCase();
-  if (focusValue) {
-    console.log(e.target.textContent);
-  }
-}
+// function focusFunc(e) {
+//   let focusValue = e.target.value.toUpperCase();
+//   console.log(e);
+// }
 
-function deleteInput(e) {
-  const key = e.key;
-  if (key === "Backspace" || key === "Delete") {
-    lettersCopy.push(focusValue);
-    showletters(lettersCopy);
-  }
-}
+// function deleteInput(e) {
+//   const key = e.key;
+//   console.log(e.srcElement.textContent);
+//   if (key === "Backspace" || key === "Delete") {
+//     console.log("delete pushed");
+//     lettersCopy.push(focusValue);
+//     console.log(lettersCopy);
+//     // while (letterpool.firstChild) {
+//     //   letterpool.removeChild(letterpool.firstChild);
+//     // }
+
+//     letterpool.innerHTML = "";
+//     lettersCopy.map((letter) => {
+//       showletters(letter);
+//     });
+//   }
+// }
 
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
@@ -257,4 +265,4 @@ function replaceLetters() {
 
 window.score = score;
 window.replaceLetters = replaceLetters;
-window.focusFunc = focusFunc;
+// window.focusFunc = focusFunc;
