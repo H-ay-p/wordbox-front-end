@@ -41,6 +41,7 @@ const inputBoxes = document.querySelectorAll(".letter-input");
 inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener("input", validateInput);
   inputBox.addEventListener("keypress", preventInvalidInput);
+  inputBox.addEventListener("focus", focusFunc);
 });
 
 const letterpool = document.getElementById("letterpool");
@@ -123,20 +124,20 @@ function drop(e) {
 function validateInput(event) {
   const currentValue = event.target.value.toUpperCase();
   const newLetters = document.querySelectorAll(".newletter");
-  console.log(currentValue);
-  console.log(newLetters);
 
   for (let i = 0; i < newLetters.length; i++) {
     if (newLetters[i].textContent == currentValue) {
       letterpool.removeChild(newLetters[i]);
       let index = lettersCopy.indexOf(currentValue);
       lettersCopy.splice(index, 1);
-      console.log(lettersCopy);
       break;
     }
   }
 }
 
+function focusFunc(e) {
+  console.log(e.target);
+}
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
   if (!lettersCopy.includes(event.key)) {
@@ -242,3 +243,4 @@ function replaceLetters() {
 
 window.score = score;
 window.replaceLetters = replaceLetters;
+window.focusFunc = focusFunc;
