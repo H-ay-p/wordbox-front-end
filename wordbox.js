@@ -48,6 +48,8 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+let lettersDone = false;
+
 function showletters(letter) {
   let element = document.createElement("div");
   element.innerHTML = letter;
@@ -59,6 +61,12 @@ function showletters(letter) {
   // Append the element to the parent element
   document.getElementById("letterpool").append(element);
 }
+
+letters.map((letter) => {
+  showletters(letter);
+});
+
+lettersDone = true;
 
 // handle the dragstart
 
@@ -114,11 +122,24 @@ function drop(e) {
 
 function validateInput(event) {
   const currentValue = event.target.value.toUpperCase();
+  const newLetters = document.querySelectorAll(".newletter");
+  console.log(currentValue);
+  console.log(newLetters);
+
+  for (let i = 0; i < newLetters.length; i++) {
+    if (newLetters[i].textContent == currentValue) {
+      letterpool.removeChild(newLetters[i]);
+      let index = lettersCopy.indexOf(currentValue);
+      lettersCopy.splice(index, 1);
+      console.log(lettersCopy);
+      break;
+    }
+  }
 }
 
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
-  if (!letters.includes(event.key)) {
+  if (!lettersCopy.includes(event.key)) {
     event.preventDefault();
   }
 }
@@ -209,10 +230,6 @@ export function score() {
     tryAgainButton.classList.remove("hidden");
   }
 }
-
-letters.map((letter) => {
-  showletters(letter);
-});
 
 function replaceLetters() {
   lettersCopy.map((letter) => {
