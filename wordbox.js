@@ -137,7 +137,7 @@ function validateInput(e) {
       letterpool.removeChild(newLetters[i]);
       let index = lettersCopy.indexOf(currentValue);
       lettersCopy.splice(index, 1);
-      removedLetters.push(newLetters[i]);
+      letterInDanger.push(newLetters[i].textContent);
       break;
     }
   }
@@ -153,10 +153,13 @@ function preventInvalidInput(event) {
 let letterInDanger = [];
 function focusFunc(e) {
   letterInDanger = [];
-  letterInDanger.push(e.target.value);
+  if (e.target.value != "") {
+    letterInDanger.push(e.target.value);
+  }
 }
 
 function restoreLetter() {
+  console.log(letterInDanger);
   letterInDanger.map((letter) => {
     showletters(letter);
     lettersCopy.push(letter);
