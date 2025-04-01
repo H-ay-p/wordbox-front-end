@@ -77,6 +77,9 @@ lettersDone = true;
 function validateInput(e) {
   const currentValue = e.target.value.toUpperCase();
   const newLetters = document.querySelectorAll(".newletter");
+  if (document.getElementById("letterpool").childElementCount === 1) {
+    document.getElementById("score").removeAttribute("disabled", true);
+  }
 
   for (let i = 0; i < newLetters.length; i++) {
     if (newLetters[i].textContent == currentValue) {
@@ -117,7 +120,7 @@ export function score() {
 
   for (let i = 1; i < 17; i++) {
     const box = document.getElementById("box" + i);
-    letters.push(box.children[0].textContent.toUpperCase());
+    letters.push(box.value);
   }
 
   // console.log(stringedLetters);
