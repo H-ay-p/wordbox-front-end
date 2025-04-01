@@ -63,9 +63,7 @@ function showletters(letter) {
   element.innerHTML = letter;
   element.classList.add("newletter");
   element.classList.add("margin");
-  element.setAttribute("draggable", true);
   element.setAttribute("id", letter + getRandomInt(100000));
-  element.addEventListener("dragstart", dragStart);
   // Append the element to the parent element
   document.getElementById("letterpool").append(element);
 }
