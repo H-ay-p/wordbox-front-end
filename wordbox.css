@@ -117,3 +117,14 @@ body {
 .more-margin {
   margin: 1em 1em 1.5em 1em;
 }
+
+.w3-hide {
+  display: none !important;
+}
+.w3-show-block,
+.w3-show {
+  display: block !important;
+}
+.w3-show-inline-block {
+  display: inline-block !important;
+}

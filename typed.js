@@ -1,5 +1,14 @@
 import { getLetters } from "./api.js";
 
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
 // const letters = [
 //   "A",
 //   "A",
@@ -213,3 +222,4 @@ function replaceLetters() {
 window.score = score;
 window.replaceLetters = replaceLetters;
 window.focusFunc = focusFunc;
+window.myFunction = myFunction;
