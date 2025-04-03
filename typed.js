@@ -1,13 +1,5 @@
 import { getLetters } from "./api.js";
 
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
 let threeLetterWordsList = [];
 fetch("three.json")
   .then((response) => response.json())
@@ -23,6 +15,15 @@ fetch("three.json")
     fourLetterWordsList = data;
   })
   .catch((error) => console.error("Error loading JSON:", error));
+
+function showText(id) {
+  const text = document.getElementById(id);
+  if (text.classList.contains("w3-show")) {
+    text.classList.remove("w3-show");
+  } else {
+    text.classList.add("w3-show");
+  }
+}
 
 const letters = await getLetters();
 
@@ -204,4 +205,4 @@ function replaceLetters() {
 window.score = score;
 window.replaceLetters = replaceLetters;
 window.focusFunc = focusFunc;
-window.myFunction = myFunction;
+window.showText = showText;

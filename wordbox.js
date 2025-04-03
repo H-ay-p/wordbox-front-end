@@ -16,14 +16,12 @@ fetch("three.json")
   })
   .catch((error) => console.error("Error loading JSON:", error));
 
-function myFunction(id) {
-  var x = document.getElementById(id);
-  const classes = x.classList;
-  console.log(classes);
-  if (x.classList.contains("w3-show")) {
-    x.classList.remove("w3-show");
+function showText(id) {
+  const text = document.getElementById(id);
+  if (text.classList.contains("w3-show")) {
+    text.classList.remove("w3-show");
   } else {
-    x.classList.add("w3-show");
+    text.classList.add("w3-show");
   }
 }
 
@@ -202,4 +200,4 @@ function replaceLetters() {
 
 window.score = score;
 window.replaceLetters = replaceLetters;
-window.myFunction = myFunction;
+window.showText = showText;
