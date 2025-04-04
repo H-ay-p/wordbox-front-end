@@ -86,7 +86,7 @@ function validateInput(e) {
 
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
-  if (!lettersCopy.includes(event.key)) {
+  if (!lettersCopy.includes(event.key) || event.target.value.length > 0) {
     event.preventDefault();
   }
 }
