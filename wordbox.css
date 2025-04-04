@@ -19,8 +19,8 @@ body {
 }
 .letterbox {
   background-color: rgb(250, 250, 250);
-  border: 2px green solid;
-  border-radius: 0.5em;
+  border: rgb(109, 141, 109) solid 2px;
+  /* border-radius: 0.5em; */
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -31,8 +31,8 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
   display: inline-flex;
-  border: green solid 2px;
-  border-radius: 5px;
+  border: rgb(109, 141, 109) solid 2px;
+  /* border-radius: 5px; */
   background-color: rgb(250, 250, 250);
   width: 8vmin;
   height: 8vmin;
@@ -43,11 +43,12 @@ body {
 
 .button {
   font-size: 20pt;
-  border-radius: 0.3em;
-  background-color: #dae8e1;
+  /* border-radius: 0.3em; */
+  background-color: #dde4d4;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
   padding: 0.1em 0.4em 0.1em 0.4em;
+  border: none;
 }
 
 .drag-over {
@@ -56,20 +57,21 @@ body {
 }
 
 .letter-input {
-  height: 12vmin;
-  width: 12vmin;
-  border-radius: 0.1em;
+  height: 13.6vmin;
+  width: 13.5vmin;
+  /* border-radius: 0.1em; */
   font-size: 5em;
-  border: green solid 2px;
+  border: rgb(109, 141, 109) solid 2px;
   text-align: center;
 }
 
 .letterpool {
   width: 80vmin;
   height: 19vmin;
-  border: 2px solid #45584f;
+  /* border: rgb(109, 141, 109) solid 2px; */
+  background-color: #dde4d4;
   margin: 1vh auto 3vh auto;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   padding: 1em;
   text-align: center;
   object-fit: contain;
@@ -120,8 +122,8 @@ body {
 
 .button-rules {
   font-size: 20pt;
-  border-radius: 0.3em;
-  background-color: #dae8e1;
+  /* border-radius: 0.3em; */
+  background-color: #dde4d4;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
   padding: 0.1em 0.4em 0.1em 0.4em;
