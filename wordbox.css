@@ -8,6 +8,13 @@ body {
   background-color: #eeecec;
 }
 
+nav {
+  display: flex;
+  height: 8vmin;
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: #dde4d4;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -42,13 +49,14 @@ body {
 }
 
 .button {
-  font-size: 20pt;
-  /* border-radius: 0.3em; */
+  font-size: 15pt;
+  width: 30%;
   background-color: #dde4d4;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
-  padding: 0.1em 0.4em 0.1em 0.4em;
   border: none;
+  color: rgb(71, 92, 71);
+  cursor: pointer;
 }
 
 .drag-over {
@@ -87,20 +95,22 @@ body {
   padding: 1em 2em 1em 2em;
   width: 80vmin;
   margin: auto;
-  color: #0f5132;
+  color: rgb(71, 92, 71);
 }
 
 .scoretext {
   font-size: 18pt;
-  font-family: Helvetica;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
   font-weight: bold;
   margin-top: 0.5em;
-  color: #0f5132;
+  color: rgb(71, 92, 71);
 }
 
 #score {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
+  border: 1px solid rgb(71, 92, 71);
 }
 
 .dragging {
@@ -117,17 +127,17 @@ body {
 }
 
 .more-margin {
-  margin: 1em 1em 1.5em 1em;
+  margin: 1.5e;
+  padding: 0.5em;
 }
 
 .button-rules {
-  font-size: 20pt;
-  /* border-radius: 0.3em; */
+  font-size: 15pt;
+  width: 30%;
   background-color: #dde4d4;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
-  padding: 0.1em 0.4em 0.1em 0.4em;
-  border: 1px;
+  color: rgb(71, 92, 71);
 }
 
 .w3-hide {
@@ -139,4 +149,14 @@ body {
 }
 .w3-show-inline-block {
   display: inline-block !important;
+}
+
+.disabled {
+  color: grey;
+  background-color: rgb(233, 231, 231);
+  border: 1px solid rgb(233, 231, 231) !important;
+}
+
+footer {
+  height: 2em;
 }

@@ -101,7 +101,9 @@ function drop(e) {
   e.target.appendChild(draggable);
   draggable.classList.add("dropped");
   if (letterpool.childElementCount === 0) {
-    document.getElementById("score").removeAttribute("disabled", true);
+    const scoreBtn = document.getElementById("score");
+    scoreBtn.removeAttribute("disabled", true);
+    scoreBtn.classList.remove("disabled");
   }
 }
 
