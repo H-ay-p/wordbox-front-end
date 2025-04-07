@@ -70,7 +70,9 @@ function validateInput(e) {
   const currentValue = e.target.value.toUpperCase();
   const newLetters = document.querySelectorAll(".newletter");
   if (letterpool.childElementCount === 1) {
-    document.getElementById("score").removeAttribute("disabled", true);
+    const scoreBtn = document.getElementById("score");
+    scoreBtn.removeAttribute("disabled", true);
+    scoreBtn.classList.remove("disabled");
   }
 
   for (let i = 0; i < newLetters.length; i++) {

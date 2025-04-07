@@ -8,12 +8,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <h1 class="text">Wordbox</h1>
-
-    <section class="text">
-      <button onclick="showText('rules')" class="button-rules">
-        See rules
+    <nav>
+      <button onclick="showText('rules')" class="button">See rules</button>
+      <h1 class="text">Wordbox</h1>
+      <button
+        class="button"
+        id="goToTyped"
+        onclick="window.location.href='./index.html'"
+      >
+        Click for mobile
       </button>
+    </nav>
 
       <div id="rules" class="w3-hide">
         <p>
@@ -27,20 +32,16 @@
       </div>
     </section>
 
-    <div class="centred">
-      <button
-        class="button more-margin"
-        id="goToIndex"
-        onclick="window.location.href='./index.html'"
-      >
-        Click here to go back to drag and drop!
-      </button>
-    </div>
-
+  
     <section class="letterpool" id="letterpool"></section>
 
     <div class="centred">
-      <button class="button" id="score" onclick="score()" disabled="true">
+      <button
+        class="button disabled more-margin"
+        id="score"
+        onclick="score()"
+        disabled="true"
+      >
         Score
       </button>
     </div>
@@ -71,16 +72,21 @@
 
     <section class="centred scoretext">
       <p id="scoretext"></p>
-      <button class="button hidden" id="try-again" onclick="replaceLetters()">
+      <button
+        class="button more-margin hidden"
+        id="try-again"
+        onclick="replaceLetters()"
+      >
         Try again
       </button>
       <button
-        class="button hidden"
+        class="button more-margin hidden"
         id="new-letters"
         onClick="window.location.reload()"
       >
         New letters
       </button>
     </section>
+    <footer></footer>
   </body>
 </html>
