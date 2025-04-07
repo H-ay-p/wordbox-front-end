@@ -24,10 +24,17 @@ function showText(id) {
     text.classList.add("w3-show");
   }
 }
+let letterInDanger = [];
 
 const letters = await getLetters();
 
 const lettersCopy = [...letters];
+
+let toLowerLetters = [...lettersCopy];
+
+const lowerCaseLetters = toLowerLetters.map((l) => {
+  return l.toLowerCase();
+});
 
 const inputBoxes = document.querySelectorAll(".letter-input");
 
@@ -68,19 +75,23 @@ lettersDone = true;
 
 function validateInput(e) {
   const currentValue = e.target.value.toUpperCase();
+  const lowerValue = currentValue.toLowerCase();
   const newLetters = document.querySelectorAll(".newletter");
   if (letterpool.childElementCount === 1) {
     const scoreBtn = document.getElementById("score");
     scoreBtn.removeAttribute("disabled", true);
     scoreBtn.classList.remove("disabled");
   }
-
   for (let i = 0; i < newLetters.length; i++) {
     if (newLetters[i].textContent == currentValue) {
       letterpool.removeChild(newLetters[i]);
       let index = lettersCopy.indexOf(currentValue);
+      let lowerIndex = lowerCaseLetters.indexOf(lowerValue);
       lettersCopy.splice(index, 1);
+      lowerCaseLetters.splice(lowerIndex, 1);
+      letterInDanger = [];
       letterInDanger.push(newLetters[i].textContent);
+
       break;
     }
   }
@@ -88,24 +99,27 @@ function validateInput(e) {
 
 // Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
-  if (!lettersCopy.includes(event.key) || event.target.value.length > 0) {
+  if (
+    (!lettersCopy.includes(event.key) &&
+      !lowerCaseLetters.includes(event.key)) ||
+    event.target.value.length > 0
+  ) {
     event.preventDefault();
   }
 }
 
-let letterInDanger = [];
 function focusFunc(e) {
   letterInDanger = [];
   if (e.target.value != "") {
-    letterInDanger.push(e.target.value);
+    letterInDanger.unshift(e.target.value);
   }
 }
 
 function restoreLetter() {
-  console.log(letterInDanger);
   letterInDanger.map((letter) => {
-    showletters(letter);
-    lettersCopy.push(letter);
+    showletters(letter.toUpperCase());
+    lettersCopy.push(letter.toUpperCase());
+    lowerCaseLetters.push(letter.toLowerCase());
   });
 }
 
@@ -163,14 +177,14 @@ export function score() {
   let correctwords = [];
 
   fourLetterWords.forEach((word) => {
-    if (fourLetterWordsList.words.includes(word)) {
+    if (fourLetterWordsList.words.includes(word.toUpperCase())) {
       points += 2;
       correctwords.push(" " + word);
     }
   });
 
   threeLetterWords.forEach((word) => {
-    if (threeLetterWordsList.words.includes(word)) {
+    if (threeLetterWordsList.words.includes(word.toUpperCase())) {
       points += 1;
       correctwords.push(" " + word);
     }
