@@ -9,7 +9,7 @@ fetch("three.json")
   .catch((error) => console.error("Error loading JSON:", error));
 
 let fourLetterWordsList = [];
-fetch("three.json")
+fetch("four.json")
   .then((response) => response.json())
   .then((data) => {
     fourLetterWordsList = data;
