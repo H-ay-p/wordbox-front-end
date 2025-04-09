@@ -5,18 +5,23 @@
     <title>Wordbox</title>
     <link href="./wordbox.css" rel="stylesheet" type="text/css" />
     <script src="./wordbox.js" type="module" defer></script>
+    <script
+      src="https://kit.fontawesome.com/e296ee9787.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <nav>
-      <button onclick="showText('rules')" class="button">See rules</button>
+      <button onclick="showText('rules')" class="button">Rules</button>
       <h1 class="text">Wordbox</h1>
       <button
-        class="button"
+        class="emoji"
         id="goToTyped"
         onclick="window.location.href='./typed.html'"
       >
-        Click for mobile
+        <i class="fa-solid fa-mobile-screen-button"></i>
       </button>
     </nav>
 

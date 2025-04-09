@@ -4,13 +4,16 @@ body {
   align-items: center;
   text-align: center;
   height: 100vh;
-  margin: 0;
+  width: 100%;
   background-color: #eeecec;
+  margin: 0;
 }
 
 nav {
   display: flex;
-  height: 8vmin;
+  height: 10vh;
+  /* width: 100%; */
+  margin: 0;
   padding-left: 5em;
   padding-right: 5em;
   background-color: #dde4d4;
@@ -49,7 +52,18 @@ nav {
 }
 
 .button {
-  font-size: 15pt;
+  font-size: 2.2vh;
+  width: 30%;
+  background-color: #dde4d4;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  border: none;
+  color: rgb(71, 92, 71);
+  cursor: pointer;
+}
+
+.emoji {
+  font-size: 3vh;
   width: 30%;
   background-color: #dde4d4;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
@@ -96,10 +110,11 @@ nav {
   width: 80vmin;
   margin: auto;
   color: rgb(71, 92, 71);
+  font-size: 2.5vh;
 }
 
 .scoretext {
-  font-size: 16pt;
+  font-size: 2vh;
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
   font-weight: bold;
