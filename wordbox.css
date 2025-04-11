@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
+
   width: 100%;
   background-color: #eeecec;
   margin: 0;
@@ -18,6 +18,16 @@ nav {
   padding-right: 5em;
   background-color: #dde4d4;
 }
+
+footer {
+  /* width: 100%; */
+  text-align: center;
+  margin: 0%;
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: #dde4d4;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -111,6 +121,16 @@ nav {
   margin: auto;
   color: rgb(71, 92, 71);
   font-size: 3vh;
+}
+
+.footertext {
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  padding-top: 0.5em;
+  width: 90vmin;
+  margin: auto;
+  color: rgb(71, 92, 71);
+  font-size: 1.5vh;
 }
 
 .scoretext {
