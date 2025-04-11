@@ -25,6 +25,14 @@ socket.onmessage = (event) => {
   console.log("Server says:", event);
 };
 
+const letterToSend = document.getElementById("letterInput").value;
+
+function sendLetter(e) {
+  console.log(letterToSend);
+  console.log("sending info");
+  socket.send(JSON.stringify({ letter: letterToSend }));
+}
+
 function showText(id) {
   const text = document.getElementById(id);
   if (text.classList.contains("w3-show")) {
@@ -143,3 +151,4 @@ export function score() {
 
 window.score = score;
 window.showText = showText;
+window.sendLetter = sendLetter;

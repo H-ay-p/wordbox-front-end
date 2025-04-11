@@ -34,18 +34,25 @@
 
  
         <p class="text">Choose the next letter</p>
-      <input class="letterbox letter-input"></input>
+      <input class="letterbox letter-input" id="letterInput"></input>
 
 
     <div class="centred">
       <button
+      class="button more-margin send"
+      id="send"
+      onclick="sendLetter()"
+    >
+      Send
+    </button>
+      <!-- <button
         class="button disabled more-margin"
         id="score"
         onclick="score()"
         disabled="true"
       >
         Score
-      </button>
+      </button> -->
     </div>
 
     <section class="square grid">
