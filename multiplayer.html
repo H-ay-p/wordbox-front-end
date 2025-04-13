@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Wordbox</title>
     <link href="./wordbox.css" rel="stylesheet" type="text/css" />
-    <script src="./multiplayer.js" type="module" defer></script>
+    <script src="./js/multiplayer.js" type="module" defer></script>
     <script
       src="https://kit.fontawesome.com/e296ee9787.js"
       crossorigin="anonymous"
@@ -34,18 +34,25 @@
 
  
         <p class="text">Choose the next letter</p>
-      <input class="letterbox letter-input"></input>
+      <input class="letterbox letter-input" id="letterInput" type="text"></input>
 
 
     <div class="centred">
       <button
+      class="button more-margin send"
+      id="send"
+      onclick="sendLetter()"
+    >
+      Send
+    </button>
+      <!-- <button
         class="button disabled more-margin"
         id="score"
         onclick="score()"
         disabled="true"
       >
         Score
-      </button>
+      </button> -->
     </div>
 
     <section class="square grid">
