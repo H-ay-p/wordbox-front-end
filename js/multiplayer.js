@@ -20,14 +20,20 @@ socket.onopen = () => {
   socket.send(JSON.stringify({ type: "join", name: "Player1" }));
 };
 
-socket.onmessage = (event) => {
-  //   const data = JSON.parse(event.data);
-  console.log("Server says:", event);
+socket.onmessage = async function (event) {
+  const text = await event.data.text();
+  console.log("Received text:", text);
+
+  try {
+    const json = JSON.parse(text);
+    console.log("Parsed JSON:", json.letter);
+  } catch (err) {
+    console.error("Not valid JSON:", err);
+  }
 };
 
-const letterToSend = document.getElementById("letterInput").value;
-
-function sendLetter(e) {
+function sendLetter() {
+  const letterToSend = document.getElementById("letterInput").value;
   console.log(letterToSend);
   console.log("sending info");
   socket.send(JSON.stringify({ letter: letterToSend }));
@@ -42,29 +48,85 @@ function showText(id) {
   }
 }
 
-const inputBoxes = document.querySelectorAll(".letter-input");
+const inputBox = document.getElementById("letterInput");
 
-// inputBoxes.forEach((inputBox) => {
-//   inputBox.addEventListener("input", validateInput);
-//   inputBox.addEventListener("keypress", preventInvalidInput);
-//   inputBox.addEventListener("focus", focusFunc);
-//   inputBox.addEventListener("input", (event) => {
-//     if (event.inputType === "deleteContentBackward") {
-//       console.log("delete pressed");
-//     }
-//   });
-// });
+inputBox.addEventListener("input", validateInput);
+inputBox.addEventListener("keypress", preventInvalidInput);
+inputBox.addEventListener("input", (event) => {
+  if (event.inputType === "deleteContentBackward") {
+    console.log("delete pressed");
+  }
+});
 
-// Function to prevent invalid characters from being entered
-// function preventInvalidInput(event) {
-//   if (
-//     (!lettersCopy.includes(event.key) &&
-//       !lowerCaseLetters.includes(event.key)) ||
-//     event.target.value.length > 0
-//   ) {
-//     event.preventDefault();
-//   }
-// }
+const letters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+const lowerCaseLetters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+function validateInput() {
+  console.log("entering");
+}
+function preventInvalidInput(event) {
+  console.log(event.key);
+  if (
+    (!letters.includes(event.key) && !lowerCaseLetters.includes(event.key)) ||
+    event.target.value.length > 0
+  ) {
+    event.preventDefault();
+  }
+}
 
 export function score() {
   let letters = [];
