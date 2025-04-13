@@ -16,8 +16,12 @@ fetch("four.json")
 
 const socket = new WebSocket("ws://localhost:3001");
 
+let isOpen = false;
+
 socket.onopen = () => {
   socket.send(JSON.stringify({ type: "join", name: "Player1" }));
+  console.log(isOpen);
+  isOpen = true;
 };
 
 socket.onmessage = async function (event) {
@@ -26,7 +30,7 @@ socket.onmessage = async function (event) {
 
   try {
     const json = JSON.parse(text);
-    console.log("Parsed JSON:", json.letter);
+    console.log(json.letter);
   } catch (err) {
     console.error("Not valid JSON:", err);
   }
