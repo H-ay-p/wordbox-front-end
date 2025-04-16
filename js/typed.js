@@ -1,5 +1,7 @@
 import { getLetters } from "./api.js";
 
+// get the letters
+
 let threeLetterWordsList = [];
 fetch("three.json")
   .then((response) => response.json())
@@ -24,6 +26,8 @@ function showText(id) {
     text.classList.add("w3-show");
   }
 }
+
+//page setup
 let letterInDanger = [];
 
 const letters = await getLetters();
@@ -44,7 +48,7 @@ inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener("focus", focusFunc);
   inputBox.addEventListener("input", (event) => {
     if (event.inputType === "deleteContentBackward") {
-      restoreLetter(); // event.data holds the deleted character
+      restoreLetter();
     }
   });
 });
@@ -55,15 +59,12 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-let lettersDone = false;
-
 function showletters(letter) {
   let element = document.createElement("div");
   element.innerHTML = letter;
   element.classList.add("newletter");
   element.classList.add("margin");
   element.setAttribute("id", letter + getRandomInt(100000));
-  // Append the element to the parent element
   letterpool.append(element);
 }
 
@@ -71,7 +72,7 @@ letters.map((letter) => {
   showletters(letter);
 });
 
-lettersDone = true;
+// handle input
 
 function validateInput(e) {
   const currentValue = e.target.value.toUpperCase();
@@ -97,7 +98,6 @@ function validateInput(e) {
   }
 }
 
-// Function to prevent invalid characters from being entered
 function preventInvalidInput(event) {
   if (
     (!lettersCopy.includes(event.key) &&
@@ -123,6 +123,8 @@ function restoreLetter() {
   });
 }
 
+//scoring
+
 export function score() {
   let letters = [];
 
@@ -130,8 +132,6 @@ export function score() {
     const box = document.getElementById("box" + i);
     letters.push(box.value);
   }
-
-  // console.log(stringedLetters);
 
   const fourLetterWords = [];
   const threeLetterWords = [];
