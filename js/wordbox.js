@@ -1,5 +1,7 @@
 import { getLetters } from "./api.js";
 
+//get the letters for scoring
+
 let threeLetterWordsList = [];
 fetch("three.json")
   .then((response) => response.json())
@@ -16,6 +18,7 @@ fetch("four.json")
   })
   .catch((error) => console.error("Error loading JSON:", error));
 
+//page setup
 function showText(id) {
   const text = document.getElementById(id);
   if (text.classList.contains("w3-show")) {
@@ -35,8 +38,6 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-let lettersDone = false;
-
 function showletters(letter) {
   let element = document.createElement("div");
   element.innerHTML = letter;
@@ -45,15 +46,12 @@ function showletters(letter) {
   element.setAttribute("draggable", true);
   element.setAttribute("id", letter + getRandomInt(100000));
   element.addEventListener("dragstart", dragStart);
-  // Append the element to the parent element
   letterpool.append(element);
 }
 
 letters.map((letter) => {
   showletters(letter);
 });
-
-lettersDone = true;
 
 const boxes = document.querySelectorAll(".letterbox");
 boxes.forEach((box) => {
@@ -106,6 +104,8 @@ function drop(e) {
     scoreBtn.classList.remove("disabled");
   }
 }
+
+//score
 
 export function score() {
   let letters = [];
