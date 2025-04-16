@@ -12,7 +12,6 @@ body {
 nav {
   display: flex;
   height: 10vh;
-  /* width: 100%; */
   margin: 0;
   padding-left: 5em;
   padding-right: 5em;
@@ -20,7 +19,6 @@ nav {
 }
 
 footer {
-  /* width: 100%; */
   text-align: center;
   margin: 0%;
   padding-left: 5em;
@@ -29,6 +27,7 @@ footer {
   min-height: 6vh;
 }
 
+/* Main elements */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -38,28 +37,15 @@ footer {
   gap: 1vmin;
   margin: 2vh auto 2vh auto;
 }
-.letterbox {
-  background-color: rgb(250, 250, 250);
-  border: rgb(109, 141, 109) solid 2px;
-  /* border-radius: 0.5em; */
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.newletter {
-  font-size: 4em;
-  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
-    sans-serif;
-  display: inline-flex;
-  border: rgb(109, 141, 109) solid 2px;
-  /* border-radius: 5px; */
-  background-color: rgb(250, 250, 250);
-  width: 8vmin;
-  height: 8vmin;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
+.letterpool {
+  width: 80vmin;
+  height: 19vmin;
+  background-color: #dde4d4;
+  margin: 1vh auto 3vh auto;
+  padding: 1em;
+  text-align: center;
+  object-fit: contain;
 }
 
 .button {
@@ -73,47 +59,6 @@ footer {
   cursor: pointer;
 }
 
-.emoji {
-  font-size: 3vh;
-  width: 30%;
-  background-color: #dde4d4;
-  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
-    sans-serif;
-  border: none;
-  color: rgb(71, 92, 71);
-  cursor: pointer;
-}
-
-.drag-over {
-  /*border: dashed 2px red;*/
-  background-color: #7ba77b;
-}
-
-.letter-input {
-  height: 13.6vmin;
-  width: 13.5vmin;
-  /* border-radius: 0.1em; */
-  font-size: 5em;
-  border: rgb(109, 141, 109) solid 2px;
-  text-align: center;
-}
-
-.letterpool {
-  width: 80vmin;
-  height: 19vmin;
-  /* border: rgb(109, 141, 109) solid 2px; */
-  background-color: #dde4d4;
-  margin: 1vh auto 3vh auto;
-  /* border-radius: 1em; */
-  padding: 1em;
-  text-align: center;
-  object-fit: contain;
-}
-
-.margin {
-  margin: 0.1em;
-}
-
 .text {
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
@@ -123,6 +68,53 @@ footer {
   color: rgb(71, 92, 71);
   font-size: 3vh;
 }
+
+/* Letter elements */
+
+.letterbox {
+  background-color: rgb(250, 250, 250);
+  border: rgb(109, 141, 109) solid 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newletter {
+  font-size: 4em;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  display: inline-flex;
+  border: rgb(109, 141, 109) solid 2px;
+  background-color: rgb(250, 250, 250);
+  width: 8vmin;
+  height: 8vmin;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-input {
+  height: 13.6vmin;
+  width: 13.5vmin;
+  font-size: 5em;
+  border: rgb(109, 141, 109) solid 2px;
+  text-align: center;
+}
+
+.drag-over {
+  background-color: #7ba77b;
+}
+
+.dragging {
+  opacity: 50%;
+}
+
+.dropped {
+  opacity: 100%;
+  border: #a8a6a6 dotted 2px;
+}
+
+/* Other text */
 
 .footertext {
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
@@ -143,29 +135,7 @@ footer {
   color: rgb(71, 92, 71);
 }
 
-#score {
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-  border: 1px solid rgb(71, 92, 71);
-}
-
-.dragging {
-  opacity: 50%;
-}
-
-.dropped {
-  opacity: 100%;
-  border: #a8a6a6 dotted 2px;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.more-margin {
-  margin: 1.5e;
-  padding: 0.5em;
-}
+/* Other buttons */
 
 .button-rules {
   font-size: 15pt;
@@ -174,6 +144,48 @@ footer {
   font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
     sans-serif;
   color: rgb(71, 92, 71);
+}
+
+.disabled {
+  color: grey;
+  background-color: rgb(233, 231, 231);
+  border: 1px solid rgb(233, 231, 231) !important;
+}
+
+.send {
+  margin-top: 1em;
+}
+
+#score {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  border: 1px solid rgb(71, 92, 71);
+}
+
+/* Misc */
+
+.emoji {
+  font-size: 3vh;
+  width: 30%;
+  background-color: #dde4d4;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  border: none;
+  color: rgb(71, 92, 71);
+  cursor: pointer;
+}
+
+.more-margin {
+  margin: 1.5e;
+  padding: 0.5em;
+}
+
+.margin {
+  margin: 0.1em;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .w3-hide {
@@ -185,14 +197,4 @@ footer {
 }
 .w3-show-inline-block {
   display: inline-block !important;
-}
-
-.disabled {
-  color: grey;
-  background-color: rgb(233, 231, 231);
-  border: 1px solid rgb(233, 231, 231) !important;
-}
-
-.send {
-  margin-top: 1em;
 }
