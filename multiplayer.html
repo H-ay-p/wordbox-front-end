@@ -12,15 +12,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body class="centred">
-    <nav>
-      <button onclick="showText('rules')" class="button">Rules</button>
-      <h1 class="text">Wordbox</h1>
+    <nav class="navgrid">
+      <button onclick="showText('rules')" class="button" id="rules-btn">
+        Rules
+      </button>
+      <h1 class="text" id="title">Wordbox</h1>
       <button
         class="emoji"
         id="goToTyped"
-        onclick="window.location.href='./index.html'"
+        onclick="window.location.href='./typed.html'"
       >
-        <i class="fa-solid fa-desktop"></i>
+        <i class="fa-solid fa-mobile-screen-button"></i>
       </button>
     </nav>
     <section class="text">
