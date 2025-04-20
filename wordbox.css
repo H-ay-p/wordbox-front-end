@@ -9,11 +9,8 @@ body {
 }
 
 nav {
-  /* display: flex; */
   height: 10vh;
   margin: 0;
-  padding-left: 1em;
-  padding-right: 1em;
   background-color: #dde4d4;
   max-width: 100vw;
 }
@@ -31,7 +28,7 @@ footer {
 
 .navgrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: 100%;
   max-width: 100vw;
 }
@@ -146,7 +143,7 @@ footer {
 }
 
 #title {
-  grid-column: 2;
+  grid-column: 3;
 }
 
 /* Other buttons */
@@ -181,8 +178,18 @@ footer {
   margin: auto;
 }
 
+#hard-btn {
+  grid-column: 2;
+  margin: auto;
+}
+
+#multi-btn {
+  grid-column: 4;
+  margin: auto;
+}
+
 #goToTyped {
-  grid-column: 3;
+  grid-column: 5;
   margin: auto;
 }
 
