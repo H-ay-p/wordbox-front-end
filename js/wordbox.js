@@ -34,6 +34,8 @@ const lettersCopy = [...letters];
 
 const letterpool = document.getElementById("letterpool");
 
+const scoreBtn = document.getElementById("score");
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -99,7 +101,6 @@ function drop(e) {
   e.target.appendChild(draggable);
   draggable.classList.add("dropped");
   if (letterpool.childElementCount === 0) {
-    const scoreBtn = document.getElementById("score");
     scoreBtn.removeAttribute("disabled", true);
     scoreBtn.classList.remove("disabled");
   }
@@ -192,6 +193,9 @@ export function score() {
 }
 
 function replaceLetters() {
+  document.getElementById("scoretext").textContent = "";
+  scoreBtn.setAttribute("disabled", true);
+  scoreBtn.classList.add("disabled");
   newLetterButton.classList.add("hidden");
   tryAgainButton.classList.add("hidden");
   lettersCopy.map((letter) => {

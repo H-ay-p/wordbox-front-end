@@ -74,12 +74,13 @@ letters.map((letter) => {
 
 // handle input
 
+const scoreBtn = document.getElementById("score");
+
 function validateInput(e) {
   const currentValue = e.target.value.toUpperCase();
   const lowerValue = currentValue.toLowerCase();
   const newLetters = document.querySelectorAll(".newletter");
   if (letterpool.childElementCount === 1) {
-    const scoreBtn = document.getElementById("score");
     scoreBtn.removeAttribute("disabled", true);
     scoreBtn.classList.remove("disabled");
   }
@@ -210,6 +211,9 @@ export function score() {
 }
 
 function replaceLetters() {
+  document.getElementById("scoretext").textContent = "";
+  scoreBtn.setAttribute("disabled", true);
+  scoreBtn.classList.add("disabled");
   newLetterButton.classList.add("hidden");
   tryAgainButton.classList.add("hidden");
   lettersCopy.map((letter) => {
