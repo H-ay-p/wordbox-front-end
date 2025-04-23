@@ -125,6 +125,9 @@ function restoreLetter() {
 
 //scoring
 
+const newLetterButton = document.getElementById("new-letters");
+const tryAgainButton = document.getElementById("try-again");
+
 export function score() {
   let letters = [];
 
@@ -189,9 +192,6 @@ export function score() {
       correctwords.push(" " + word);
     }
   });
-
-  const newLetterButton = document.getElementById("new-letters");
-  const tryAgainButton = document.getElementById("try-again");
 
   if (points === 0) {
     document.getElementById("scoretext").textContent =
