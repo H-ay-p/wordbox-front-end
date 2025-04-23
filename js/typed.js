@@ -210,6 +210,8 @@ export function score() {
 }
 
 function replaceLetters() {
+  newLetterButton.classList.add("hidden");
+  tryAgainButton.classList.add("hidden");
   lettersCopy.map((letter) => {
     showletters(letter);
     boxes.forEach((box) => {
