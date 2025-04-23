@@ -34,6 +34,8 @@ const lettersCopy = [...letters];
 
 const letterpool = document.getElementById("letterpool");
 
+const scoreBtn = document.getElementById("score");
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -99,13 +101,15 @@ function drop(e) {
   e.target.appendChild(draggable);
   draggable.classList.add("dropped");
   if (letterpool.childElementCount === 0) {
-    const scoreBtn = document.getElementById("score");
     scoreBtn.removeAttribute("disabled", true);
     scoreBtn.classList.remove("disabled");
   }
 }
 
 //score
+
+const newLetterButton = document.getElementById("new-letters");
+const tryAgainButton = document.getElementById("try-again");
 
 export function score() {
   let letters = [];
@@ -172,9 +176,6 @@ export function score() {
     }
   });
 
-  const newLetterButton = document.getElementById("new-letters");
-  const tryAgainButton = document.getElementById("try-again");
-
   if (points === 0) {
     document.getElementById("scoretext").textContent =
       "Sorry, there are no words. And no points. Try again, or get new letters!";
@@ -192,6 +193,11 @@ export function score() {
 }
 
 function replaceLetters() {
+  document.getElementById("scoretext").textContent = "";
+  scoreBtn.setAttribute("disabled", true);
+  scoreBtn.classList.add("disabled");
+  newLetterButton.classList.add("hidden");
+  tryAgainButton.classList.add("hidden");
   lettersCopy.map((letter) => {
     showletters(letter);
     boxes.forEach((box) => {
