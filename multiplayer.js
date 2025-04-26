@@ -58,6 +58,8 @@ const inputBoxes = document.querySelectorAll(".letter-input");
 //   }
 // }
 
+const playAgainButton = document.getElementById("play-again");
+
 export function score() {
   let letters = [];
 
@@ -127,17 +129,14 @@ export function score() {
 
   if (points === 0) {
     document.getElementById("scoretext").textContent =
-      "Sorry, there are no words. And no points. Try again, or get new letters!";
-
-    newLetterButton.classList.remove("hidden");
-    tryAgainButton.classList.remove("hidden");
+      "Sorry, there are no words. And no points. Play again?";
+    playAgainButton.classList.remove("hidden");
   } else {
     document.getElementById("scoretext").textContent = `You got
       ${points} 
        points. Your scoring words were:
-      ${correctwords}. Try again with these, or get new letters!`;
-    newLetterButton.classList.remove("hidden");
-    tryAgainButton.classList.remove("hidden");
+      ${correctwords}. Your opponent got [placeholder] points. [placeholder] wins`;
+    playAgainButton.classList.remove("hidden");
   }
 }
 
