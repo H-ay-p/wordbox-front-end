@@ -140,5 +140,10 @@ export function score() {
   }
 }
 
+function playAgain() {
+  //TBC
+}
+
 window.score = score;
 window.showText = showText;
+window.playAgain = playAgain;
