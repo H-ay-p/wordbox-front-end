@@ -181,6 +181,7 @@ footer {
 #hard-btn {
   grid-column: 2;
   margin: auto;
+  width: 100%;
 }
 
 #multi-btn {
