@@ -146,6 +146,17 @@ footer {
   grid-column: 3;
 }
 
+#hardtext {
+  font-size: 14pt;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  padding: 1em 2em 1em 2em;
+  width: auto;
+  max-width: 100%;
+  margin: auto;
+  color: rgb(71, 92, 71);
+}
+
 /* Other buttons */
 
 .button-rules {
