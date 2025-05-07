@@ -79,15 +79,13 @@ socket.onmessage = (event) => {
 
 // HELPER FUNCTIONS
 function displayLetter(letter, sender) {
-  const displayArea = document.getElementById("letterDisplay");
-  if (displayArea) {
+  const newLetter = document.getElementById("newLetter");
+  if (newLetter) {
     const messageDiv = document.createElement("div");
     messageDiv.className =
       sender === myPlayerNumber ? "my-letter" : "their-letter";
-    messageDiv.textContent = `${
-      sender === myPlayerNumber ? "You" : "Opponent"
-    } sent: ${letter}`;
-    displayArea.appendChild(messageDiv);
+    messageDiv.textContent = `${letter}`;
+    newLetter.appendChild(messageDiv);
   }
 }
 
@@ -99,13 +97,6 @@ function updateUI() {
       currentTurn === myPlayerNumber ? "Your turn!" : "Opponent's turn";
   }
 }
-
-// function sendLetter() {
-//   const letterToSend = document.getElementById("letterInput").value;
-//   console.log(letterToSend);
-//   console.log("sending info");
-//   socket.send(JSON.stringify({ letter: letterToSend }));
-// }
 
 function showText(id) {
   const text = document.getElementById(id);
