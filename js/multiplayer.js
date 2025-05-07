@@ -15,33 +15,97 @@ fetch("four.json")
   .catch((error) => console.error("Error loading JSON:", error));
 
 const socket = new WebSocket("ws://localhost:3001");
+let myPlayerNumber; // Will be 1 or 2
+let currentTurn; // Whose turn it is (1 or 2)
 
-let isOpen = false;
+// SEND LETTER FUNCTION (YOUR ORIGINAL + IMPROVEMENTS)
+function sendLetter() {
+  const letterInput = document.getElementById("letterInput");
+  const letterToSend = letterInput.value.trim();
 
-socket.onopen = () => {
-  socket.send(JSON.stringify({ type: "join", name: "Player1" }));
-  console.log(isOpen);
-  isOpen = true;
-};
+  if (!letterToSend) return; // Don't send empty messages
 
-socket.onmessage = async function (event) {
-  const text = await event.data.text();
-  console.log("Received text:", text);
+  console.log("Sending letter:", letterToSend);
 
+  socket.send(
+    JSON.stringify({
+      type: "letter", // Message type
+      letter: letterToSend,
+      sender: myPlayerNumber, // Who sent it
+      timestamp: Date.now(), // Optional: helps with ordering
+    })
+  );
+
+  letterInput.value = ""; // Clear input
+  letterInput.focus(); // Ready for next letter
+}
+
+// SINGLE ONMESSAGE HANDLER (COMBINES ALL FUNCTIONALITY)
+socket.onmessage = (event) => {
   try {
-    const json = JSON.parse(text);
-    console.log(json.letter);
-  } catch (err) {
-    console.error("Not valid JSON:", err);
+    const data = JSON.parse(event.data);
+    console.log("Received:", data);
+
+    // 1. Handle player assignment
+    if (data.type === "player_assignment") {
+      myPlayerNumber = data.playerNumber;
+      currentTurn = data.currentTurn;
+      console.log(`You are Player ${myPlayerNumber}`);
+      updateUI();
+    }
+
+    // 2. Handle opponent connection
+    else if (data.type === "opponent_connected") {
+      console.log("Your opponent has arrived!");
+      updateUI();
+    }
+
+    // 3. Handle turn updates
+    else if (data.type === "game_update") {
+      currentTurn = data.nextTurn;
+      console.log("Turn changed to Player", currentTurn);
+      updateUI();
+    }
+
+    // 4. Handle incoming letters (YOUR NEW FUNCTIONALITY)
+    else if (data.type === "letter") {
+      console.log(`Player ${data.sender} sent: ${data.letter}`);
+      displayLetter(data.letter, data.sender);
+    }
+  } catch (error) {
+    console.error("Message error:", error);
   }
 };
 
-function sendLetter() {
-  const letterToSend = document.getElementById("letterInput").value;
-  console.log(letterToSend);
-  console.log("sending info");
-  socket.send(JSON.stringify({ letter: letterToSend }));
+// HELPER FUNCTIONS
+function displayLetter(letter, sender) {
+  const displayArea = document.getElementById("letterDisplay");
+  if (displayArea) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className =
+      sender === myPlayerNumber ? "my-letter" : "their-letter";
+    messageDiv.textContent = `${
+      sender === myPlayerNumber ? "You" : "Opponent"
+    } sent: ${letter}`;
+    displayArea.appendChild(messageDiv);
+  }
 }
+
+function updateUI() {
+  // Update turn display, enable/disable controls, etc.
+  const turnDisplay = document.getElementById("turn-indicator");
+  if (turnDisplay) {
+    turnDisplay.textContent =
+      currentTurn === myPlayerNumber ? "Your turn!" : "Opponent's turn";
+  }
+}
+
+// function sendLetter() {
+//   const letterToSend = document.getElementById("letterInput").value;
+//   console.log(letterToSend);
+//   console.log("sending info");
+//   socket.send(JSON.stringify({ letter: letterToSend }));
+// }
 
 function showText(id) {
   const text = document.getElementById(id);

@@ -34,6 +34,7 @@
       </div>
     </section>
 
+    <p id="turn-indicator"></p>
  
         <p class="text">Choose the next letter</p>
       <input class="letterbox letter-input" id="letterInput" type="text"></input>
@@ -43,7 +44,7 @@
       <button
       class="button more-margin send"
       id="send"
-disabled="true"
+onclick="sendLetter()"
     >
       Send
     </button>
