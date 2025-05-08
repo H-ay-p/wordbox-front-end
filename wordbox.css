@@ -108,8 +108,8 @@ footer {
 }
 
 .display-letter {
-  height: 13.6vmin;
-  width: 13.5vmin;
+  height: 13.9vmin;
+  width: 13.9vmin;
   font-size: 5em;
   border: rgb(109, 141, 109) solid 2px;
   margin: auto;
@@ -243,6 +243,10 @@ footer {
 
 .margin {
   margin: 0.1em;
+}
+
+.margin-bottom {
+  margin-bottom: 3vmin;
 }
 
 .hidden {
