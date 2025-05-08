@@ -1,3 +1,4 @@
+console.log("page open");
 let threeLetterWordsList = [];
 fetch("three.json")
   .then((response) => response.json())
@@ -15,15 +16,61 @@ fetch("four.json")
   .catch((error) => console.error("Error loading JSON:", error));
 
 const socket = new WebSocket("ws://localhost:3001");
+let myPlayerNumber;
+let currentTurn;
 
 socket.onopen = () => {
-  socket.send(JSON.stringify({ type: "join", name: "Player1" }));
+  console.log("Connected to server");
 };
 
 socket.onmessage = (event) => {
-  //   const data = JSON.parse(event.data);
-  console.log("Server says:", event);
+  console.log("entering");
+  try {
+    // Parse the incoming message
+    const data =
+      typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+
+    if (data.type === "player_assignment") {
+      myPlayerNumber = data.playerNumber;
+      currentTurn = data.currentTurn;
+      console.log(`You are Player ${myPlayerNumber}`);
+      updateUI();
+    } else if (data.type === "opponent_connected") {
+      console.log("Opponent has connected!");
+      updateUI();
+    } else if (data.type === "game_update") {
+      console.log(`Move received: ${JSON.stringify(data.move)}`);
+      currentTurn = data.nextTurn;
+      updateUI();
+      // Handle the game state update here
+    }
+  } catch (error) {
+    console.error("Error processing message:", error);
+  }
 };
+
+function makeMove(move) {
+  if (myPlayerNumber === currentTurn) {
+    socket.send(
+      JSON.stringify({
+        type: "move",
+        playerNumber: myPlayerNumber,
+        move: move,
+      })
+    );
+  } else {
+    console.log("Not your turn!");
+  }
+}
+
+function updateUI() {
+  // Update your HTML to show whose turn it is
+  document.getElementById("turn-indicator").textContent =
+    currentTurn === myPlayerNumber ? "Your turn!" : "Opponent's turn";
+
+  // Disable/enable controls based on turn
+  document.getElementById("send").disabled = currentTurn !== myPlayerNumber;
+}
 
 function showText(id) {
   const text = document.getElementById(id);

@@ -100,12 +100,30 @@ footer {
   align-items: center;
 }
 
+.letters-multi {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 2vmin;
+}
+
+.display-letter {
+  height: 13.9vmin;
+  width: 13.9vmin;
+  font-size: 5em;
+  border: rgb(109, 141, 109) solid 2px;
+  margin: auto;
+  text-align: center;
+  display: inline-flex;
+}
+
 .letter-input {
   height: 13.6vmin;
   width: 13.5vmin;
   font-size: 5em;
   border: rgb(109, 141, 109) solid 2px;
   text-align: center;
+  margin: auto;
 }
 
 .drag-over {
@@ -225,6 +243,10 @@ footer {
 
 .margin {
   margin: 0.1em;
+}
+
+.margin-bottom {
+  margin-bottom: 3vmin;
 }
 
 .hidden {
