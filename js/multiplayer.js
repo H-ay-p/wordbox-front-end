@@ -22,6 +22,9 @@ let currentTurn; // Whose turn it is (1 or 2)
 function sendLetter() {
   const letterInput = document.getElementById("letterInput");
   const letterToSend = letterInput.value.trim();
+  letterInput.classList.contains("hidden")
+    ? letterInput.classList.remove("hidden")
+    : letterInput.classList.add("hidden");
 
   if (!letterToSend) return; // Don't send empty messages
 
