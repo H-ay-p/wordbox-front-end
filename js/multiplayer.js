@@ -43,6 +43,7 @@ function sendLetter() {
   letterInput.focus(); // Ready for next letter
 }
 
+let letter = [];
 // SINGLE ONMESSAGE HANDLER (COMBINES ALL FUNCTIONALITY)
 socket.onmessage = (event) => {
   try {
@@ -74,6 +75,7 @@ socket.onmessage = (event) => {
     else if (data.type === "letter") {
       console.log(`Player ${data.sender} sent: ${data.letter}`);
       displayLetter(data.letter, data.sender);
+      letter.push(data.letter);
     }
   } catch (error) {
     console.error("Message error:", error);
@@ -111,6 +113,11 @@ function showText(id) {
 }
 
 const inputBox = document.getElementById("letterInput");
+const gridBoxes = document.querySelectorAll(".letterbox");
+
+gridBoxes.forEach((gridBox) => {
+  gridBox.addEventListener("input", preventInvalidGridInput);
+});
 
 inputBox.addEventListener("input", validateInput);
 inputBox.addEventListener("keypress", preventInvalidInput);
@@ -152,9 +159,6 @@ const lowerCaseLetters = [
   "a",
   "b",
   "c",
-  "d",
-  "e",
-  "f",
   "g",
   "h",
   "i",
@@ -186,6 +190,37 @@ function preventInvalidInput(event) {
     (!letters.includes(event.key) && !lowerCaseLetters.includes(event.key)) ||
     event.target.value.length > 0
   ) {
+    event.preventDefault();
+  }
+}
+
+// function validateGridInput(e) {
+//   const currentValue = e.target.value.toUpperCase();
+//   const lowerValue = currentValue.toLowerCase();
+//   const newLetters = document.querySelectorAll(".newletter");
+//   if (letterpool.childElementCount === 1) {
+//     scoreBtn.removeAttribute("disabled", true);
+//     scoreBtn.classList.remove("disabled");
+//   }
+//   for (let i = 0; i < newLetters.length; i++) {
+//     if (newLetters[i].textContent == currentValue) {
+//       letterpool.removeChild(newLetters[i]);
+//       let index = lettersCopy.indexOf(currentValue);
+//       let lowerIndex = lowerCaseLetters.indexOf(lowerValue);
+//       lettersCopy.splice(index, 1);
+//       lowerCaseLetters.splice(lowerIndex, 1);
+//       letterInDanger = [];
+//       letterInDanger.push(newLetters[i].textContent);
+
+//       break;
+//     }
+//   }
+// }
+
+function preventInvalidGridInput(event) {
+  console.log(letter);
+  console.log(event.key);
+  if (!letter.includes(event.key)) {
     event.preventDefault();
   }
 }
